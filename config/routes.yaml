@@ -4,3 +4,11 @@
 users:
   type: rest
   resource: App\Controller\UserController
+
+articles:
+  type: rest
+  resource: App\Controller\ArticleController
+
+admin:
+  type: rest
+  resource: App\Controller\AdminController
