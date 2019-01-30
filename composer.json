@@ -20,7 +20,8 @@
         "symfony/serializer-pack": "^1.0",
         "symfony/translation": "4.2.*",
         "symfony/validator": "4.2.*",
-        "symfony/yaml": "4.2.*"
+        "symfony/yaml": "4.2.*",
+      "ext-json": "*"
     },
     "config": {
         "preferred-install": {
@@ -69,7 +70,9 @@
     },
     "require-dev": {
         "hautelook/alice-bundle": "^2.3",
+        "symfony/browser-kit": "4.2.*",
         "symfony/maker-bundle": "^1.11",
+        "symfony/phpunit-bridge": "4.2.*",
         "symfony/profiler-pack": "^1.0"
     }
 }

@@ -7,6 +7,8 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
+use Nelmio\ApiDocBundle\Annotation\Security;
+use Swagger\Annotations as SWG;
 
 class AdminController extends AbstractFOSRestController
 {
@@ -22,6 +24,22 @@ class AdminController extends AbstractFOSRestController
     }
 
     /**
+     * @Security(name="api_key"),
+     * @SWG\Get(
+     *     tags={"Admin"},
+     *      @SWG\Response(
+     *             response=200,
+     *             description="Success",
+     *         ),
+     *         @SWG\Response(
+     *             response=403,
+     *             description="Forbiden",
+     *         ),
+     *         @SWG\Response(
+     *             response=401,
+     *             description="Unauthorized",
+     *         ),
+     *)
      * @Rest\View(serializerGroups={"user"})
      * @Rest\Get("/api/admin/users")
      */
@@ -32,6 +50,22 @@ class AdminController extends AbstractFOSRestController
     }
 
     /**
+     * @Security(name="api_key"),
+     * @SWG\Get(
+     *     tags={"Admin"},
+     *      @SWG\Response(
+     *             response=200,
+     *             description="Success",
+     *         ),
+     *         @SWG\Response(
+     *             response=403,
+     *             description="Forbiden",
+     *         ),
+     *         @SWG\Response(
+     *             response=401,
+     *             description="Unauthorized",
+     *         ),
+     *)
      * @Rest\View(serializerGroups={"article"})
      * @Rest\Get("/api/admin/articles")
      */

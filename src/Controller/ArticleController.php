@@ -7,9 +7,11 @@ use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Nelmio\ApiDocBundle\Annotation\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Swagger\Annotations as SWG;
 
 
 class ArticleController extends AbstractFOSRestController
@@ -24,6 +26,22 @@ class ArticleController extends AbstractFOSRestController
     }
 
     /**
+     * @Security(name="api_key"),
+     * @SWG\Get(
+     *     tags={"Article"},
+     *      @SWG\Response(
+     *             response=200,
+     *             description="Success",
+     *         ),
+     *         @SWG\Response(
+     *             response=403,
+     *             description="Forbiden",
+     *         ),
+     *         @SWG\Response(
+     *             response=401,
+     *             description="Unauthorized",
+     *         ),
+     *)
      * @Rest\View(serializerGroups={"article"})
      * @Rest\Get("/api/articles/{id}")
      */
@@ -33,6 +51,22 @@ class ArticleController extends AbstractFOSRestController
     }
 
     /**
+     * @Security(name="api_key"),
+     * @SWG\Get(
+     *     tags={"Article"},
+     *      @SWG\Response(
+     *             response=200,
+     *             description="Success",
+     *         ),
+     *         @SWG\Response(
+     *             response=403,
+     *             description="Forbiden",
+     *         ),
+     *         @SWG\Response(
+     *             response=401,
+     *             description="Unauthorized",
+     *         ),
+     *)
      * @Rest\View(serializerGroups={"article"})
      * @Rest\Get("/api/articles")
      */
@@ -43,6 +77,22 @@ class ArticleController extends AbstractFOSRestController
     }
 
     /**
+     * @Security(name="api_key"),
+     * @SWG\Post(
+     *     tags={"Article"},
+     *      @SWG\Response(
+     *             response=200,
+     *             description="Success",
+     *         ),
+     *         @SWG\Response(
+     *             response=403,
+     *             description="Forbiden",
+     *         ),
+     *         @SWG\Response(
+     *             response=401,
+     *             description="Unauthorized",
+     *         ),
+     *)
      * @Rest\View(serializerGroups={"article"})
      * @Rest\Post("/api/articles")
      * @ParamConverter("article", converter="fos_rest.request_body")
@@ -56,6 +106,22 @@ class ArticleController extends AbstractFOSRestController
     }
 
     /**
+     * @Security(name="api_key"),
+     * @SWG\Patch(
+     *     tags={"Article"},
+     *      @SWG\Response(
+     *             response=200,
+     *             description="Success",
+     *         ),
+     *         @SWG\Response(
+     *             response=403,
+     *             description="Forbiden",
+     *         ),
+     *         @SWG\Response(
+     *             response=401,
+     *             description="Unauthorized",
+     *         ),
+     *)
      * @Rest\View(serializerGroups={"article"})
      * @Rest\Patch("/api/articles/{id}")
      */
@@ -81,9 +147,25 @@ class ArticleController extends AbstractFOSRestController
             $this->em->flush();
             return $this->view($article);
         }
-}
+    }
 
     /**
+     * @Security(name="api_key"),
+     * @SWG\Delete(
+     *     tags={"Article"},
+     *      @SWG\Response(
+     *             response=200,
+     *             description="Success",
+     *         ),
+     *         @SWG\Response(
+     *             response=403,
+     *             description="Forbiden",
+     *         ),
+     *         @SWG\Response(
+     *             response=401,
+     *             description="Unauthorized",
+     *         ),
+     *)
      * @Rest\View(serializerGroups={"article"})
      * @Rest\Delete("/api/articles/{id}")
      */
