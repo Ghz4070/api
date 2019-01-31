@@ -97,6 +97,7 @@ class UserController extends AbstractFOSRestController
      *)
      * @Rest\View(serializerGroups={"user"})
      * @Rest\Post("/api/users")
+     * @return \FOS\RestBundle\View\View
      * @ParamConverter("user", converter="fos_rest.request_body")
      */
     public function postApiUser(User $user, ConstraintViolationListInterface $validationErrors)
@@ -144,7 +145,7 @@ class UserController extends AbstractFOSRestController
      *         ),
      *)
      * @Rest\View(serializerGroups={"user"})
-     * @Rest\Patch("/api/users/{id}")
+     * @Rest\Patch("/api/patch/users/{id}")
      */
     public function patchApiUser(User $user, Request $request, ValidatorInterface $validator)
     {
@@ -185,11 +186,9 @@ class UserController extends AbstractFOSRestController
             // Throw a 400 Bad Request with all errors messages (Not readable, you can do better)
             throw new BadRequestHttpException(\json_encode($errors));
         }
-
         $this->em->persist($user);
         $this->em->flush();
         return $this->view($user);
-
     }
 
     /**
@@ -210,7 +209,7 @@ class UserController extends AbstractFOSRestController
      *         ),
      *)
      * @Rest\View(serializerGroups={"user"})
-     * @Rest\Delete("/api/users/{id}")
+     * @Rest\Delete("/api/delete/users/{id}")
      */
     public function deleteApiUser(User $user, Request $request)
     {

@@ -51,7 +51,7 @@ class User implements UserInterface
 
     /**
      * @Groups("user")
-     * @ORM\Column(type="simple_array", nullable=true)
+     * @ORM\Column(type="simple_array")
      */
     private $roles = [];
 

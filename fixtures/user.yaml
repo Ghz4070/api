@@ -1,6 +1,10 @@
 # fixtures/user.yml
 App\Entity\User:
-  user_{1..10}:
+  user_1:
+    email: 'admin@admin.com'
+    roles: ['ROLE_ADMIN', 'ROLE_USER']
+    api_key: 'admin'
+  user_{2..10}:
     firstname: <firstName()>
     lastname: <lastName()>
     email: <email()>
